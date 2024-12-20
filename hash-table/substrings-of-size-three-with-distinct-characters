@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isGood(string subString) {
+        if(subString[0] != subString[1] && subString[0] != subString[2] && subString[1] != subString[2]) return true;
+        return false;
+    }
+    int countGoodSubstrings(string s) {
+        if(s.size() < 3) {
+            return 0;
+        }
+        int ans = 0;
+        for(int i=0; i<s.size()-2; i++) {
+            if(isGood(s.substr(i, 3))) {
+                ans++;
+            }
+        }
+        return ans;
+    }
+};
