@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool isEnglishLetter(char ch) {
+        if((tolower(ch))>='a' && (tolower(ch))<='z') {
+            return true;
+        }
+        return false;
+    }
+    string reverseOnlyLetters(string s) {
+        int st = 0;
+        int end = s.size()-1;
+        while(end > st) {
+            if(isEnglishLetter(s[st]) && isEnglishLetter(s[end])) {
+                int t = s[st];
+                s[st] = s[end];
+                s[end] = t;
+                end--;
+                st++;
+            }
+            else if(isEnglishLetter(s[st]) && !isEnglishLetter(s[end])) {
+                end--;
+            }
+            else if(!isEnglishLetter(s[st]) && isEnglishLetter(s[end])) {
+                st++;
+            }
+            else{
+                st++;
+                end--;
+            }
+        }
+        return s;
+    }
+};
