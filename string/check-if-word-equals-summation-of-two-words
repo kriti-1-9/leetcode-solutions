@@ -1,0 +1,14 @@
+int converter(char *word);
+bool isSumEqual(char* firstWord, char* secondWord, char* targetWord) {
+    if (converter(firstWord) + converter(secondWord) == converter(targetWord)){
+        return true;
+    }
+    return false;
+}
+int converter(char* word) {
+    int result = 0;
+    for (int i = 0; i < strlen(word); i++) {
+        result = result * 10 + (word[i] - 'a');
+    }
+    return result;
+}
